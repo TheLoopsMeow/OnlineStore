@@ -13,22 +13,24 @@ function Store () {
     useEffect(()=> {
         fetch(`https://fakestoreapi.com/products`)
         .then(r => r.json())
-        .then((r) => {
-            setItems(r)
+        .then((product) => {
+            setItems(product)
         })
     }, [])
 
-    console.log(items)
-    
+    // console.log(items)
+
     function renderProductCards () {
-        
-        return items.map((product)=>{
-            
-            <div key={product.id}>{product.title}</div>
-            
+            return items.map((item)=>{
+            return(<>
+            <div>{item.title}</div><br></br>
+            <div>{item.description}</div><br></br>
+            <div>${item.price}</div><br></br>
+            </>)
         })
-       
+        
     }
+    
 
 return (
     <>
@@ -37,6 +39,7 @@ return (
     Welcome to the Store Page!
     <br></br>
     {renderProductCards()}
+    {}
     </div>
     </>
 )
