@@ -14,7 +14,7 @@ function NavBar () {
         <Link to="/Store">Store</Link>
     </span>
     <span>   |    
-        <Link to="/CartPage">Cart Page</Link>
+        <Link to="/CartPage">Cart</Link>
     </span>
     <span>
         {/* <Link to="" component={}></Link> */}

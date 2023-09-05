@@ -21,9 +21,9 @@ function App() {
       <shoppingCart.Provider value={shoppingCart}>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/NavBar" component={<NavBar />}></Route>
-          <Route path="/Store" component={<Store />}></Route>
-          <Route path="/CartPage" component={<CartPage />}></Route>
+          {/* <Route path="/NavBar" component={<NavBar />}></Route> */}
+          <Route path="/Store" element={<Store />}></Route>
+          <Route path="/CartPage" element={<CartPage />}></Route>
         </Routes>
       </shoppingCart.Provider>
     </BrowserRouter>
