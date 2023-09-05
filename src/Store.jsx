@@ -19,12 +19,24 @@ function Store () {
     }, [])
 
     console.log(items)
+    
+    function renderProductCards () {
+        
+        return items.map((product)=>{
+            
+            <div key={product.id}>{product.title}</div>
+            
+        })
+       
+    }
 
 return (
     <>
     <div>
     <NavBar />
     Welcome to the Store Page!
+    <br></br>
+    {renderProductCards()}
     </div>
     </>
 )
