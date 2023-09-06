@@ -2,7 +2,7 @@ import react, { useState, useEffect, createContext, useContext } from "react"
 import HomePage from "./HomePage"
 import CartPage from "./CartPage"
 import NavBar from "./NavBar"
-import App from "./App"
+import App, {shoppingCart} from "./App"
 // import shoppingCart from "./StoreContext"
 import {BrowserRouter, Router, Routes, Link} from "react-router-dom"
 
@@ -11,7 +11,8 @@ const style5 = {
 }
 
 function Store () {
-    
+    const {cartItems, setCartItems} = useContext(shoppingCart)
+   
 
     //Used to render the items that can be purchased, difine by the API.
     const [items, setItems] = useState([])
@@ -24,15 +25,19 @@ function Store () {
         })
     }, [])
 
-    console.log(items)
+    // console.log(items)
     
-    // function handleAddToCart (item) {
-    //    shoppingCart = useContext({
-    //     itemTitle: item.title,
-    //     quantity: 0
-    //    }
-    //    ) 
-    // }
+    //Working on cart handler
+    function handleAddToCart (item) {
+       setCartItems({
+        ...cartItems,
+        itemTitle: item.title,
+        quantity: 1
+    }
+    )
+    console.log(cartItems)
+
+    }
    
 
     function renderProductCards () {
@@ -44,11 +49,11 @@ function Store () {
                 <p>{item.title}</p>
                 <p>{item.description}</p>
                 <p>${item.price}</p>
-                <span >Add to cart!</span>
+                <button onClick={()=>{handleAddToCart(item)}}>Add to cart!</button>
                 <br></br>
                 <br></br>
               </div>
-            //   onClick={handleAddToCart(item)}
+              
                
             ) 
         })

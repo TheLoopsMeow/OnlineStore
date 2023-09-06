@@ -9,7 +9,7 @@ import CartPage from "./CartPage"
 // import StoreContext from "./StoreContext"
 // import shoppingCart from "./StoreContext"
 
-let shoppingCart = createContext ()
+export let shoppingCart = createContext ()
 
 function App() {
   const [cartItems, setCartItems] = useState()
