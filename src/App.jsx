@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import {BrowserRouter, Router, Routes, Route, Link } from "react-router-dom"
 import {useContext, createContext } from "react"
@@ -8,20 +6,21 @@ import HomePage from "./HomePage"
 import NavBar from "./NavBar"
 import Store from "./Store"
 import CartPage from "./CartPage"
+// import StoreContext from "./StoreContext"
+// import shoppingCart from "./StoreContext"
 
-const shoppingCart = createContext ({
-  //No data to bein.  Items are stored as an object with a name matching the  item, and a number: n.
-})
+let shoppingCart = createContext ()
 
 function App() {
+  const [cartItems, setCartItems] = useState()
+
 
   return (
     <>
     <BrowserRouter >
-      <shoppingCart.Provider value={shoppingCart}>
+      <shoppingCart.Provider value={{cartItems, setCartItems}}>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          {/* <Route path="/NavBar" component={<NavBar />}></Route> */}
           <Route path="/Store" element={<Store />}></Route>
           <Route path="/CartPage" element={<CartPage />}></Route>
         </Routes>
