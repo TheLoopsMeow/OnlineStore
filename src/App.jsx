@@ -12,7 +12,7 @@ import CartPage from "./CartPage"
 export let shoppingCart = createContext ()
 
 function App() {
-  const [cartItems, setCartItems] = useState()
+  let [cartItems, setCartItems] = useState([])
 
 
   return (
