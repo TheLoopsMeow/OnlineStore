@@ -7,12 +7,22 @@ import App, {shoppingCart} from "./App"
 import {BrowserRouter, Router, Routes, Link} from "react-router-dom"
 
 const style5 = {
-    width: "20%",
+    width: "75%",
+    align: "center"
+}
+
+const style6 = {
+    width: "25%",
+    display: "inline-grid",
+    padding: "1em",
+    border: "2px solid yellow",
+    borderRadius: "12px",
 }
 
 function Store () {
     const {cartItems, setCartItems} = useContext(shoppingCart)
     let tempCart = []
+    const [isLoading, setIsLoading] = useState(true)
     // const [tempCart2, setTempCart2] = useState()
 
     let quantityArray = [0]
@@ -25,6 +35,7 @@ function Store () {
         .then(r => r.json())
         .then((product) => {
             setItems(product)
+            setIsLoading(false)
         })
     }, [])
 
@@ -43,6 +54,7 @@ function Store () {
             quantityArray.push(0)
         }
 
+        //not working!
         //add item quantity to cart
         quantityArray[currentIndex] += 1 
 
@@ -67,8 +79,7 @@ function Store () {
 
             return items.map((item)=>{
             return(
-              
-                <div key={item.id} >
+                <div style={style6} key={item.id} >
                 <img style={style5} src={item.image} alt={item.title} />
                 <p>{item.title}</p>
                 <p>{item.description}</p>
@@ -77,6 +88,7 @@ function Store () {
                 <br></br>
                 <br></br>
               </div>
+                
               
                
             ) 
@@ -90,6 +102,8 @@ return (
     Welcome to the Store Page!
     <br></br>
     <br></br>
+    {isLoading ? <div>Loading ...</div> : null}
+
     {renderProductCards()}
     {}
     </div>
