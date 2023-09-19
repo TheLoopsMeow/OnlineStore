@@ -3,7 +3,6 @@ import HomePage from "./HomePage"
 import CartPage from "./CartPage"
 import NavBar from "./NavBar"
 import App, {shoppingCart} from "./App"
-// import shoppingCart from "./StoreContext"
 import {BrowserRouter, Router, Routes, Link} from "react-router-dom"
 
 const style5 = {
@@ -42,30 +41,9 @@ function Store () {
     
     //Working on cart handler
     function handleAddToCart (item) {
-        const isInCart = tempCart.find((cartItem) => cartItem.id === item.id);
-    
-        if(!isInCart) {
-            tempCart.push(item)
-        }
-        const currentIndex = (tempCart.findIndex((cartItem) => cartItem.id === item.id)) 
-
-        //if it is a new item being added to the cart, add a new item to the array.
-        if(quantityArray[currentIndex] == undefined){
-            quantityArray.push(0)
-        }
-
-        //not working!
-        //add item quantity to cart
-        quantityArray[currentIndex] += 1 
-
-        console.log("current Index is :" + currentIndex)
-        console.log("item is :" + tempCart[currentIndex].title)
-        console.log("number of items :" + quantityArray[currentIndex])
-        
-      
+        tempCart.push(item.title)
         let updatedCart = [...cartItems, ...tempCart]
         setCartItems(updatedCart)
-
     }
 
     console.log(cartItems)
@@ -77,7 +55,7 @@ function Store () {
        )
             return items.map((item)=>{
             return(
-                <div style={style6} key={item.id} >
+                <div style={style6} key={Math.random()} >
                 <img style={style5} src={item.image} alt={item.title} />
                 <p>{item.title}</p>
                 <p>{item.description}</p>

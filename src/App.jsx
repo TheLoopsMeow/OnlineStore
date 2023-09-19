@@ -6,8 +6,7 @@ import HomePage from "./HomePage"
 import NavBar from "./NavBar"
 import Store from "./Store"
 import CartPage from "./CartPage"
-// import StoreContext from "./StoreContext"
-// import shoppingCart from "./StoreContext"
+
 
 export let shoppingCart = createContext ()
 
