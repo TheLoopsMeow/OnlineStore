@@ -9,7 +9,8 @@ function CartPage () {
     return(
         <>
         <NavBar />
-        <span>Welcome to your cart!</span>
+        <br></br>
+        <span>Please review your cart.</span>
         </>
     )
 

@@ -7,11 +7,12 @@ import App, {shoppingCart} from "./App"
 import {BrowserRouter, Router, Routes, Link} from "react-router-dom"
 
 const style5 = {
-    width: "75%",
+    width: "66%",
     align: "center"
 }
 
 const style6 = {
+    backgroundColor: "black",
     width: "25%",
     display: "inline-grid",
     padding: "1em",
@@ -23,7 +24,6 @@ function Store () {
     const {cartItems, setCartItems} = useContext(shoppingCart)
     let tempCart = []
     const [isLoading, setIsLoading] = useState(true)
-    // const [tempCart2, setTempCart2] = useState()
 
     let quantityArray = [0]
 
@@ -61,22 +61,20 @@ function Store () {
         console.log("current Index is :" + currentIndex)
         console.log("item is :" + tempCart[currentIndex].title)
         console.log("number of items :" + quantityArray[currentIndex])
-
+        
       
         let updatedCart = [...cartItems, ...tempCart]
         setCartItems(updatedCart)
+
     }
 
-
+    console.log(cartItems)
 
     function renderProductCards () {
         useEffect (()=>{           
             setCartItems(tempCart)
        }, []
        )
-
-    //    console.log("cart items :" + cartItems)
-
             return items.map((item)=>{
             return(
                 <div style={style6} key={item.id} >
@@ -89,8 +87,6 @@ function Store () {
                 <br></br>
               </div>
                 
-              
-               
             ) 
         })
     }
@@ -99,7 +95,8 @@ return (
     <>
     <div>
     <NavBar />
-    Welcome to the Store Page!
+    <br></br>
+    Have a look around!
     <br></br>
     <br></br>
     {isLoading ? <div>Loading ...</div> : null}
