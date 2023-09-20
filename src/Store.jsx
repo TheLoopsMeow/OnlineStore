@@ -41,12 +41,15 @@ function Store () {
     
     //Working on cart handler
     function handleAddToCart (item) {
-        tempCart.push(item.title)
-        let updatedCart = [...cartItems, ...tempCart]
-        setCartItems(updatedCart)
+            tempCart.push({...item, quantity: 1})
+            
+            let updatedCart = [...cartItems, ...tempCart]
+            setCartItems(updatedCart)          
+    
     }
 
     console.log(cartItems)
+
 
     function renderProductCards () {
         useEffect (()=>{           
