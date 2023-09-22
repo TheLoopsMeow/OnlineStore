@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import {BrowserRouter, Router, Routes, Route, Link } from "react-router-dom"
-import {useContext, createContext } from "react"
+import {useContext, createContext, useEffect} from "react"
 import HomePage from "./HomePage"
 import NavBar from "./NavBar"
 import Store from "./Store"
@@ -26,21 +26,31 @@ const style6 = {
 
 function StoreItems ({item}) {
     const {cartItems, setCartItems} = useContext(shoppingCart)
-    const [incrimentButton, setIncrimentButton] = useState(<></>)
-    const [decrimentButton, setDecrimentButton] = useState(<></>)
+    const [incrimentButton, setIncrimentButton] = useState(false)
+    const [decrimentButton, setDecrimentButton] = useState(false)
+    const [test, setTest] = useState("")
     let tempCart = []
+    const [isButtonClicked, setIsButtonClicked] = useState(false)
     const [quantityInput, setQuantityInput] = useState(<></>)
 
         
     //Working on cart handler
     function handleAddToCart (item) {
-        tempCart.push({...item, quantity: 1})
+        tempCart.push({...item, quantity: 1, incriment: <button>-</button>, decriment: true})
         
         let updatedCart = [...cartItems, ...tempCart]
 
         setCartItems(updatedCart)   
         
         changeQuantity(item)
+        setIsButtonClicked(true)
+
+       
+            if(isButtonClicked){
+                setDecrimentButton(true)
+                setIncrimentButton(true)
+            }
+
 
 }
 
@@ -48,12 +58,20 @@ function StoreItems ({item}) {
 function changeQuantity(item) {
     
             console.log("working function")
-            setDecrimentButton(<button>-</button>)
-            setIncrimentButton(<button>+</button>)
-
+            useEffect(()=>{
+                
+                setTest("test")
+            })
 }
 
+console.log(cartItems)
+console.log(test)
+console.log(isButtonClicked)
+console.log(incrimentButton)
+
+
 return(
+    
     <>
     <div style={style6} key={item.id}>
     <img style={style5} src={item.image} alt={item.title} />
@@ -64,9 +82,8 @@ return(
     {/* WORKING ON THIS */}
     <button onClick={()=>{handleAddToCart(item)}}>Add to cart!</button>
     <br></br>
-   {decrimentButton}
-   {incrimentButton}
-   {item.quantity?<button>test</button>:null}
+    {decrimentButton?<button>test</button>:null}
+    {incrimentButton?<button>test</button>:null}
     <br></br>
     <br></br>
     </div>
