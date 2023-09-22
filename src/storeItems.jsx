@@ -31,23 +31,27 @@ function StoreItems ({item}) {
     const [incrimentButton, setIncrimentButton] = useState(<></>)
     const [decrimentButton, setDecrimentButton] = useState(<></>)
     const [showButtons, setShowButtons] = useState(false)
-
+    const [isClicked, setIsClicked] = useState(false)
+    const [displayQuantity, setDisplayQuantity] = useState(0)
         
     //Working on cart handler
     function handleAddToCart (item) {
-        tempCart.push({...item, quantity: 1, incriment: <button>-</button>, decriment: true}) 
+        tempCart.push({...item, quantity: 1}) 
         let updatedCart = [...cartItems, ...tempCart]
         setCartItems(updatedCart)   
         setDecrimentButton(<button>-</button>)
         setIncrimentButton(<button>+</button>)
         setShowButtons(true)
+        setIsClicked(true)
+        setQuantityInput(<input id="item.id" type="text" placeholder="Quantity"></input>)
+        setDisplayQuantity(1)
+
 }
 
 
 
 console.log(cartItems)
-console.log(decrimentButton)
-
+console.log(displayQuantity)
 
 return(
     
@@ -59,10 +63,16 @@ return(
     <p id={item.id}>${item.price}</p>
 
     {/* WORKING ON THIS */}
-    <button onClick={()=>{handleAddToCart(item)}}>Add to cart!</button>
+    {!isClicked?<button onClick={()=>{handleAddToCart(item)}}>Add to cart!</button>:null}
     <br></br>
+    {isClicked?<span>Quantity:</span>:null}
+    {isClicked?displayQuantity:null}
     {decrimentButton}
     {incrimentButton}
+    <br></br>
+    {isClicked?<label for="item.id">Edit quantity:</label>:null}
+    {isClicked?quantityInput:null}
+    {isClicked?<button>Update Quantity</button>:null}
     <br></br>
     <br></br>
     </div>
