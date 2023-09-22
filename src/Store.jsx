@@ -13,6 +13,7 @@ function Store () {
     const [isLoading, setIsLoading] = useState(true)
 
 
+
     //Used to render the items that can be purchased, difine by the API.
     const [items, setItems] = useState([])
 
@@ -33,21 +34,20 @@ function Store () {
         }, [])
           return(
             items.map((item)=>{
-                return(
-            <>
-            <StoreItems key={item.id} item={item} />
-            </>
-                )
-                })
-                
+                    return(
+                        <>
+                        <StoreItems item={item}  />
+                        </>
+                           )
+            
+                })    
           )
-       
     }
    
     
 return (
     <>
-    <div key={Math.random()}>
+    <div>
     <NavBar />
     <br></br>
     Have a look around!
@@ -56,7 +56,7 @@ return (
     {isLoading ? <div>Loading ...</div> : null}
 
     {renderProductCards()}
-    {}
+   
     </div>
     </>
 )

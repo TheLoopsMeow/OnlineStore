@@ -26,48 +26,27 @@ const style6 = {
 
 function StoreItems ({item}) {
     const {cartItems, setCartItems} = useContext(shoppingCart)
-    const [incrimentButton, setIncrimentButton] = useState(false)
-    const [decrimentButton, setDecrimentButton] = useState(false)
-    const [test, setTest] = useState("")
     let tempCart = []
-    const [isButtonClicked, setIsButtonClicked] = useState(false)
     const [quantityInput, setQuantityInput] = useState(<></>)
+    const [incrimentButton, setIncrimentButton] = useState(<></>)
+    const [decrimentButton, setDecrimentButton] = useState(<></>)
+    const [showButtons, setShowButtons] = useState(false)
 
         
     //Working on cart handler
     function handleAddToCart (item) {
-        tempCart.push({...item, quantity: 1, incriment: <button>-</button>, decriment: true})
-        
+        tempCart.push({...item, quantity: 1, incriment: <button>-</button>, decriment: true}) 
         let updatedCart = [...cartItems, ...tempCart]
-
         setCartItems(updatedCart)   
-        
-        changeQuantity(item)
-        setIsButtonClicked(true)
-
-       
-            if(isButtonClicked){
-                setDecrimentButton(true)
-                setIncrimentButton(true)
-            }
-
-
+        setDecrimentButton(<button>-</button>)
+        setIncrimentButton(<button>+</button>)
+        setShowButtons(true)
 }
 
-//renders the button to incriment, decriment, or input quantity of item
-function changeQuantity(item) {
-    
-            console.log("working function")
-            useEffect(()=>{
-                
-                setTest("test")
-            })
-}
+
 
 console.log(cartItems)
-console.log(test)
-console.log(isButtonClicked)
-console.log(incrimentButton)
+console.log(decrimentButton)
 
 
 return(
@@ -82,8 +61,8 @@ return(
     {/* WORKING ON THIS */}
     <button onClick={()=>{handleAddToCart(item)}}>Add to cart!</button>
     <br></br>
-    {decrimentButton?<button>test</button>:null}
-    {incrimentButton?<button>test</button>:null}
+    {decrimentButton}
+    {incrimentButton}
     <br></br>
     <br></br>
     </div>

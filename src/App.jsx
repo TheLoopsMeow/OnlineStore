@@ -13,7 +13,6 @@ export let shoppingCart = createContext ()
 function App() {
   let [cartItems, setCartItems] = useState([])
 
-
   return (
     <>
     <BrowserRouter >
