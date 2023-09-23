@@ -36,34 +36,22 @@ function StoreItems ({item}) {
         
     //Working on cart handler
     function handleAddToCart (item) {
+        //Set variable that determines behavior of product card.
         setIsClicked(true)
 
         //set the temporary cart array which will contain an object with the new item the user has clicked on as well as the quantity of that item, initialized to 1.
-        // let intermediaryCart = []
-        // intermediaryCart.push({...item, quantity: 1})
-        // console.log(intermediaryCart)
-        
-        //THIS LINE IS CAUSING ISSUES
-        setTempCart(tempCart.push({...item, quantity: 1}))
+        const intermediaryCart = [{...item, quantity: 1}]
+
         //Set incriment and decriment buttons for item.
-        setDecrimentButton(<button onClick={()=>{decrimentProduct(tempCart)}}>-</button>)
-        setIncrimentButton(<button onClick={()=>{incrimentProduct(tempCart)}}>+</button>)
+        setDecrimentButton(<button onClick={()=>{decrimentProduct(intermediaryCart)}}>-</button>)
+        setIncrimentButton(<button onClick={()=>{incrimentProduct(intermediaryCart)}}>+</button>)
+
+        const updatedCart = [...cartItems, ...intermediaryCart]
 
         //This is an intermidiary array which will then be passed as the value of the new cart including all previous items the user has clicked on.
-        let updatedCart = [...cartItems, ...tempCart]
         setCartItems(updatedCart) 
 
-        //find the index of the item in the cart that this input is for.
-        let index = updatedCart.findIndex((eachItem)=>eachItem.id === item.id)
-
-    //If the quantity of the current item is 0, then the product card will behave as though it hasn't been clicked by setting isClicked to false.
-    cleanUp(item)
-
-                //Clear temp cart for next item.
-                setTempCart([])
-
 }
-// console.log(cartItems)
 
 function incrimentProduct(tempCart){
     let tempCartCopy = [...tempCart];
@@ -74,7 +62,7 @@ function incrimentProduct(tempCart){
     setDisplayQuantity(tempCartCopy[0].quantity)
 }
 
-function decrimentProduct(tempCart, quantity){
+function decrimentProduct(tempCart){
     let tempCartCopy = [...tempCart];
     if(tempCartCopy[0].quantity > 0) {
         tempCartCopy[0].quantity -= 1;
@@ -101,7 +89,6 @@ function updateAmount(e, item) {
 
     //Update the entire cart, including updating the current item's quantity.
     setCartItems(tempCartCopy)
-    cleanUp(item)
 
 }
 
@@ -110,11 +97,12 @@ function cleanUp(item){
     let index = cartItems.findIndex((eachItem)=>eachItem.id === item.id)
 
     if(cartItems[index].quantity === 0) {
-
         setIsClicked(false)
+        let cleanupCart = [...cartItems]
+        cleanupCart.splice(index, 1)
+        setCartItems(cleanupCart)
     }
 }
-
 return(
     
     <>
@@ -133,8 +121,7 @@ return(
     {isClicked?incrimentButton:null}
     <br></br>
     <form>
-    {isClicked?<label for="item.id">Edit quantity:</label>:null}
-    {/* {isClicked?quantityInput:null} */}
+    {isClicked?<label htmlFor="item.id">Edit quantity:</label>:null}
     {isClicked?<input 
     id="item.id" 
     name="item.id" 
@@ -146,10 +133,13 @@ return(
     </form>
     <br></br>
     <br></br>
+    {/* If the quantity of the current item is 0, then the product card will behave as though it hasn't been clicked by setting isClicked to false. */}
+    {isClicked?cleanUp(item):null}
     </div>
-    {/* {isClicked?cleanUp(item):null} */}
+
     </>
     )
+    
 }
 
 export default StoreItems
