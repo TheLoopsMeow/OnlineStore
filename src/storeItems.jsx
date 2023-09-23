@@ -26,32 +26,47 @@ const style6 = {
 
 function StoreItems ({item}) {
     const {cartItems, setCartItems} = useContext(shoppingCart)
-    let tempCart = []
+    
     const [quantityInput, setQuantityInput] = useState(<></>)
     const [incrimentButton, setIncrimentButton] = useState(<></>)
     const [decrimentButton, setDecrimentButton] = useState(<></>)
-    const [showButtons, setShowButtons] = useState(false)
     const [isClicked, setIsClicked] = useState(false)
     const [displayQuantity, setDisplayQuantity] = useState(0)
+    const [tempCart, setTempCart] = useState([])
         
     //Working on cart handler
     function handleAddToCart (item) {
-        tempCart.push({...item, quantity: 1}) 
+        //set the temporary cart array which will contain an object with the new item the user has clicked on as well as the quantity of that item, initialized to 1.
+        setTempCart(tempCart.push({...item, quantity: 1}))
+
+        //Set incriment and decriment buttons for item.
+        setDecrimentButton(<button onClick={()=>{decrimentProduct(tempCart)}}>-</button>)
+        setIncrimentButton(<button onClick={()=>{incrimentProduct(tempCart)}}>+</button>)
+
+        //This is an intermidiary array which will then be passed as the value of the new cart including all previous items the user has clicked on.
         let updatedCart = [...cartItems, ...tempCart]
-        setCartItems(updatedCart)   
-        setDecrimentButton(<button>-</button>)
-        setIncrimentButton(<button>+</button>)
-        setShowButtons(true)
+        setCartItems(updatedCart) 
+
         setIsClicked(true)
         setQuantityInput(<input id="item.id" type="text" placeholder="Quantity"></input>)
-        setDisplayQuantity(1)
+        setDisplayQuantity(tempCart[0].quantity)
+
+        //Clear temp cart for next item.
+        setTempCart([])
 
 }
 
+function incrimentProduct(tempCart){
+    setTempCart(tempCart[0].quantity += 1);
+
+}
+function decrimentProduct(tempCart){
+    setTempCart(tempCart[0].quantity -= 1);
+}
 
 
 console.log(cartItems)
-console.log(displayQuantity)
+// console.log(displayQuantity)
 
 return(
     
@@ -70,7 +85,7 @@ return(
     {decrimentButton}
     {incrimentButton}
     <br></br>
-    {isClicked?<label for="item.id">Edit quantity:</label>:null}
+    {/* {isClicked?<label for="item.id">Edit quantity:</label>:null} */}
     {isClicked?quantityInput:null}
     {isClicked?<button>Update Quantity</button>:null}
     <br></br>
