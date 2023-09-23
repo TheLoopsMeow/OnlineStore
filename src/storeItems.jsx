@@ -27,7 +27,7 @@ const style6 = {
 function StoreItems ({item}) {
     const {cartItems, setCartItems} = useContext(shoppingCart)
     
-    const [quantityInput, setQuantityInput] = useState(<></>)
+    const [quantityInput, setQuantityInput] = useState("")
     const [incrimentButton, setIncrimentButton] = useState(<></>)
     const [decrimentButton, setDecrimentButton] = useState(<></>)
     const [isClicked, setIsClicked] = useState(false)
@@ -38,7 +38,7 @@ function StoreItems ({item}) {
     function handleAddToCart (item) {
         //set the temporary cart array which will contain an object with the new item the user has clicked on as well as the quantity of that item, initialized to 1.
         setTempCart(tempCart.push({...item, quantity: 1}))
-
+        let quantity = 1;
         //Set incriment and decriment buttons for item.
         setDecrimentButton(<button onClick={()=>{decrimentProduct(tempCart)}}>-</button>)
         setIncrimentButton(<button onClick={()=>{incrimentProduct(tempCart)}}>+</button>)
@@ -48,8 +48,7 @@ function StoreItems ({item}) {
         setCartItems(updatedCart) 
 
         setIsClicked(true)
-        setQuantityInput(<input id="item.id" type="text" placeholder="Quantity"></input>)
-        setDisplayQuantity(tempCart[0].quantity)
+        // setQuantityInput(<input id="item.id" name="item.id" type="text" placeholder="Quantity"></input>)
 
         //Clear temp cart for next item.
         setTempCart([])
@@ -57,16 +56,28 @@ function StoreItems ({item}) {
 }
 
 function incrimentProduct(tempCart){
-    setTempCart(tempCart[0].quantity += 1);
-
+    let tempCartCopy = [...tempCart];
+    tempCartCopy[0].quantity += 1;
+    setTempCart(tempCartCopy);
+    setDisplayQuantity(tempCartCopy[0].quantity)
 }
-function decrimentProduct(tempCart){
-    setTempCart(tempCart[0].quantity -= 1);
+
+function decrimentProduct(tempCart, quantity){
+    let tempCartCopy = [...tempCart];
+    tempCartCopy[0].quantity -= 1;
+    setTempCart(tempCartCopy);
+    setDisplayQuantity(tempCartCopy[0].quantity)
+}
+
+function updateAmount(e) {
+    e.preventDefault()
+
+    console.log(quantityInput)
 }
 
 
 console.log(cartItems)
-// console.log(displayQuantity)
+console.log(displayQuantity)
 
 return(
     
@@ -85,9 +96,18 @@ return(
     {decrimentButton}
     {incrimentButton}
     <br></br>
-    {/* {isClicked?<label for="item.id">Edit quantity:</label>:null} */}
-    {isClicked?quantityInput:null}
-    {isClicked?<button>Update Quantity</button>:null}
+    <form>
+    {isClicked?<label for="item.id">Edit quantity:</label>:null}
+    {/* {isClicked?quantityInput:null} */}
+    {isClicked?<input 
+    id="item.id" 
+    name="item.id" 
+    type="text" 
+    placeholder="Quantity"
+    value={quantityInput}
+    onChange={(e)=>setQuantityInput(e.target.value)}></input>:null}
+    {isClicked?<button type="Submit" onClick={(e)=>{updateAmount(e)}}>Update Quantity</button>:null}
+    </form>
     <br></br>
     <br></br>
     </div>
