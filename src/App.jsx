@@ -8,10 +8,10 @@ import Store from "./Store"
 import CartPage from "./CartPage"
 
 
-export let shoppingCart = createContext ()
+export let shoppingCart = createContext () 
 
 function App() {
-  let [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState([])
 
   return (
     <>

@@ -26,7 +26,8 @@ const style6 = {
 
 function StoreItems ({item}) {
     const {cartItems, setCartItems} = useContext(shoppingCart)
-    
+    {console.log(cartItems)}
+
     const [quantityInput, setQuantityInput] = useState("")
     const [incrimentButton, setIncrimentButton] = useState(<></>)
     const [decrimentButton, setDecrimentButton] = useState(<></>)
@@ -103,9 +104,19 @@ function cleanUp(item){
         setCartItems(cleanupCart)
     }
 }
+
+function initializeProductCard(item){
+    let index = cartItems.findIndex((eachItem)=>eachItem.id === item.id)
+    console.log(index)
+    if(index > 0 && cartItems[index].quantity > 0){
+        setIsClicked(true)
+
+    }
+}
 return(
     
     <>
+    {initializeProductCard(item)}
     <div style={style6} key={item.id}>
     <img style={style5} src={item.image} alt={item.title} />
     <p>{item.title}</p>
