@@ -6,9 +6,6 @@ Known issues:
 User input field allows decrimenting the number of the product graphically below 0 using the arrow even though the quanitty below 0 won't be set as the item's quantity.  The input field shouldn't go below 0.
 Needs CSS styling.
 
-To do:
-Add warning messages so when the user enters an amount less than 0 or more than itemLimit, they get a message notifying them that the amount must be within bounds.
-
 
  
 # React + Vite

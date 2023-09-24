@@ -88,7 +88,7 @@ function updateAmount(e, item) {
 
     }
     else if (quantityInput < 0 || quantityInput > itemLimit){
-        setQuantityWarning(<p>Quantity must be between 0 and 40.</p>)
+        setQuantityWarning(<p>Orders must be for between 0 and 40 items.</p>)
     }
 
     //Update the entire cart, including updating the current item's quantity.

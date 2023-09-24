@@ -17,8 +17,7 @@ function CartPage () {
     })
 
     //Converts the total to a string.
-    // let stringTotal = total.toFixed(2)
-     let stringTotal = "$" + total.toLocaleString()
+    let stringTotal = "$" + total.toLocaleString()
 
     console.log(cartItems)
     console.log(total)
@@ -29,16 +28,27 @@ function CartPage () {
         <br></br>
         <span>Please review your cart.</span>
         {renderCartProductCards(cartItems)}
-        <p>Total: {stringTotal}</p>
+        <p>Total: {addZero(stringTotal)}</p>
         </>
 
     )
+
+    //This function will add a zero to the display of a total if there is only 1 decimal.  This addZero function is used instead of toFixed, since toLaaleString() is being used.
+    function addZero(totalString){
+        let index = totalString.indexOf(".")
+            if(totalString[index+1] === totalString[totalString.length-1]){
+                return totalString + "0"
+            }
+            else{
+                return totalString
+            }
+    }
 
     function renderCartProductCards(cartItems){
        return (
         cartItems.map((item)=>{
             let itemTotal = item.quantity * item.price
-            // let itemTotalString = "$" + itemTotal.toFixed(2)
+
             let itemTotalString = "$" + itemTotal.toLocaleString()
 
 
@@ -46,9 +56,8 @@ function CartPage () {
                 <>
                 <br></br>
                 <p>{item.title}</p>
-                <p>{item.price} Each</p>
-                <p>x {item.quantity}</p>
-                <p>{itemTotalString}</p>
+                <p>${item.price} each x {item.quantity}</p>
+                <p>{addZero(itemTotalString)}</p>
                 <img width="50px" src={item.image}></img>
                 </>
             )
