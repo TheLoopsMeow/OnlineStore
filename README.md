@@ -3,7 +3,7 @@ This is a project that is a mockup of an online store using HTML, CSS, JavaScrip
 It uses fake shopping items from https://fakestoreapi.com/docs and uses the following to API URL in fetch to retrieve items:  https://fakestoreapi.com/products
 
 Known issues:
-User input field allows decrimenting the number of the product graphically below 0 using the arrow even though the quanitty below 0 won't be set as the item's quantity.  The input field shouldn't go below 0.
+User input field allows decrimenting the number of the product graphically below 0 using the arrow even though the quantity below 0 won't be set as the item's quantity.  The input field shouldn't go below 0.
 Needs CSS styling.
 
 
