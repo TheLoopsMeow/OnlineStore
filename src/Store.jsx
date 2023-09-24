@@ -7,6 +7,7 @@ import {BrowserRouter, Router, Routes, Link} from "react-router-dom"
 import StoreItems from "./storeItems"
 
 
+
 function Store () {
     const {cartItems, setCartItems} = useContext(shoppingCart)
     let tempCart = []
@@ -29,9 +30,7 @@ function Store () {
 
 
     function renderProductCards () {
-        useEffect (()=>{           
-            setCartItems(tempCart)
-        }, [])
+
           return(
             items.map((item)=>{
                     return(

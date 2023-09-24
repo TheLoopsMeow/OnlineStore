@@ -1,13 +1,10 @@
-import { useState } from 'react'
-import './App.css'
-import {BrowserRouter, Router, Routes, Route, Link } from "react-router-dom"
-import {useContext, createContext, useEffect} from "react"
-import HomePage from "./HomePage"
+
+import react from "react"
+import App from "./App"
 import NavBar from "./NavBar"
 import Store from "./Store"
-import CartPage from "./CartPage"
-import App, {shoppingCart} from "./App"
-
+import {useState, useContext, createContext} from "react"
+import {shoppingCart} from "./App"
 
 
 const style5 = {
@@ -26,8 +23,6 @@ const style6 = {
 
 function StoreItems ({item}) {
     const {cartItems, setCartItems} = useContext(shoppingCart)
-    {console.log(cartItems)}
-
     const [quantityInput, setQuantityInput] = useState("")
     const [incrimentButton, setIncrimentButton] = useState(<></>)
     const [decrimentButton, setDecrimentButton] = useState(<></>)
@@ -35,13 +30,15 @@ function StoreItems ({item}) {
     const [displayQuantity, setDisplayQuantity] = useState(0)
     const [tempCart, setTempCart] = useState([])
         
+
+
     //Working on cart handler
     function handleAddToCart (item) {
         //Set variable that determines behavior of product card.
         setIsClicked(true)
 
-        //set the temporary cart array which will contain an object with the new item the user has clicked on as well as the quantity of that item, initialized to 1.
-        const intermediaryCart = [{...item, quantity: 1}]
+            //set the temporary cart array which will contain an object with the new item the user has clicked on as well as the quantity of that item, initialized to 1.
+            const intermediaryCart = [{...item, quantity: 1}]
 
         //Set incriment and decriment buttons for item.
         setDecrimentButton(<button onClick={()=>{decrimentProduct(intermediaryCart)}}>-</button>)
@@ -86,17 +83,21 @@ function updateAmount(e, item) {
         tempCartCopy[index].quantity = parseInt(quantityInput, 10);
     }
 
-    setDisplayQuantity(tempCartCopy[index].quantity)
-
     //Update the entire cart, including updating the current item's quantity.
     setCartItems(tempCartCopy)
+
+    //Set the counter display for the item.
+    setDisplayQuantity(cartItems[index].quantity)
+
+
 
 }
 
 function cleanUp(item){
 
+    //Get the index in cartItems of the currnet item.
     let index = cartItems.findIndex((eachItem)=>eachItem.id === item.id)
-
+    //Delete the item from the cart if the quantity is 0.
     if(cartItems[index].quantity === 0) {
         setIsClicked(false)
         let cleanupCart = [...cartItems]
@@ -105,18 +106,21 @@ function cleanUp(item){
     }
 }
 
+//This is used to set the incriment button, decriment button, and quantity input when user leaves Store component and comes back.
 function initializeProductCard(item){
     let index = cartItems.findIndex((eachItem)=>eachItem.id === item.id)
     console.log(index)
-    if(index > 0 && cartItems[index].quantity > 0){
+    if(index >= 0 && cartItems[index].quantity > 0){
         setIsClicked(true)
-
+        setDecrimentButton(<button onClick={()=>{decrimentProduct(cartItems)}}>-</button>)
+        setIncrimentButton(<button onClick={()=>{incrimentProduct(cartItems)}}>+</button>)
+        setDisplayQuantity(cartItems[index].quantity)
     }
 }
 return(
     
     <>
-    {initializeProductCard(item)}
+    {!isClicked?initializeProductCard(item):null}
     <div style={style6} key={item.id}>
     <img style={style5} src={item.image} alt={item.title} />
     <p>{item.title}</p>
