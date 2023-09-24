@@ -30,6 +30,7 @@ function StoreItems ({item}) {
     const [isClicked, setIsClicked] = useState(false)
     const [displayQuantity, setDisplayQuantity] = useState(0)
     const [tempCart, setTempCart] = useState([])
+    const itemLimit = 40 
         
     //Working on cart handler
     function handleAddToCart (item) {
@@ -53,7 +54,9 @@ function StoreItems ({item}) {
 function incrimentProduct(tempCart){
     let tempCartCopy = [...tempCart];
 
-    tempCartCopy[0].quantity += 1;
+    if(tempCartCopy[0].quantity > 0 && tempCartCopy[0].quantity <= itemLimit) {
+        tempCartCopy[0].quantity += 1;
+    }
 
     setTempCart(tempCartCopy);
     setDisplayQuantity(tempCartCopy[0].quantity)
@@ -61,7 +64,7 @@ function incrimentProduct(tempCart){
 
 function decrimentProduct(tempCart){
     let tempCartCopy = [...tempCart];
-    if(tempCartCopy[0].quantity > 0) {
+    if(tempCartCopy[0].quantity > 0 && tempCartCopy[0].quantity <= itemLimit) {
         tempCartCopy[0].quantity -= 1;
     }
 
@@ -77,8 +80,8 @@ function updateAmount(e, item) {
     //Create a copy of the cart.
     let tempCartCopy = [...cartItems]
 
-    //Set tempCartCopy's current item quantity to the value of the user input if greater than or equal to 0.  
-    if(quantityInput >= 0) {
+    //Set tempCartCopy's current item quantity to the value of the user input if greater than or equal to 0 and less than itemLimit.
+    if(quantityInput >= 0 && quantityInput <= itemLimit) {
         tempCartCopy[index].quantity = parseInt(quantityInput, 10);
     }
 

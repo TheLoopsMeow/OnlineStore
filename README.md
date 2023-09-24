@@ -9,6 +9,9 @@ User input field allows decrimenting the number of the product below 0 using the
 Clicking the button after entering nothign into the input field results in a product quantity of NaN.
 Needs CSS styling.
 
+To do:
+Add warning messages so when hte user enters an amount less than 0 or more than itemLimit, they get a message notifying them that the amount must be within bounds.
+
 
  
 # React + Vite
