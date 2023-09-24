@@ -15,9 +15,10 @@ function CartPage () {
     cartItems.forEach((item)=>{
         total = total + (item.price * item.quantity)
     })
-    
+
     //Converts the total to a string.
-    let stringTotal = "$" + total.toFixed(2)
+    // let stringTotal = total.toFixed(2)
+     let stringTotal = "$" + total.toLocaleString()
 
     console.log(cartItems)
     console.log(total)
@@ -37,7 +38,9 @@ function CartPage () {
        return (
         cartItems.map((item)=>{
             let itemTotal = item.quantity * item.price
-            let itemTotalString = "$" + itemTotal.toFixed(2)
+            // let itemTotalString = "$" + itemTotal.toFixed(2)
+            let itemTotalString = "$" + itemTotal.toLocaleString()
+
 
             return(
                 <>

@@ -81,8 +81,9 @@ function updateAmount(e, item) {
     let tempCartCopy = [...cartItems]
 
     //Set tempCartCopy's current item quantity to the value of the user input if greater than or equal to 0 and less than itemLimit.
-    if(quantityInput >= 0 && quantityInput <= itemLimit) {
+    if(typeof(quantityInput) === 'number' && quantityInput >= 0 && quantityInput <= itemLimit) {
         tempCartCopy[index].quantity = parseInt(quantityInput, 10);
+        console.log(isNaN(quantityInput))
     }
 
     //Update the entire cart, including updating the current item's quantity.
@@ -143,6 +144,8 @@ return(
     id="item.id" 
     name="item.id" 
     type="number" 
+    inputMode="numeric"
+    pattern="[0-40]*"
     placeholder="Quantity"
     value={quantityInput}
     onChange={(e)=>setQuantityInput(e.target.value)}></input>:null}
