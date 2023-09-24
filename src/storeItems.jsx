@@ -28,7 +28,7 @@ function StoreItems ({item}) {
     const [incrimentButton, setIncrimentButton] = useState(<></>)
     const [decrimentButton, setDecrimentButton] = useState(<></>)
     const [isClicked, setIsClicked] = useState(false)
-    const [displayQuantity, setDisplayQuantity] = useState(0)
+    const [displayQuantity, setDisplayQuantity] = useState(1)
     const [tempCart, setTempCart] = useState([])
     const itemLimit = 40 
         
@@ -80,19 +80,21 @@ function updateAmount(e, item) {
     //Create a copy of the cart.
     let tempCartCopy = [...cartItems]
 
+    //This variable takes the value of quantityInput so it can be converted to a number, to preven the item quantity from being set to NaN.
+    let quantityInput2 = quantityInput
+    setQuantityInput(parseInt(quantityInput2))
+
     //Set tempCartCopy's current item quantity to the value of the user input if greater than or equal to 0 and less than itemLimit.
-    if(typeof(quantityInput) === 'number' && quantityInput >= 0 && quantityInput <= itemLimit) {
+    if(typeof(quantityInput) == "number" && quantityInput >= 0 && quantityInput <= itemLimit) {
         tempCartCopy[index].quantity = parseInt(quantityInput, 10);
-        console.log(isNaN(quantityInput))
     }
 
     //Update the entire cart, including updating the current item's quantity.
     setCartItems(tempCartCopy)
 
     //Set the counter display for the item.
-    setDisplayQuantity(cartItems[index].quantity)
-
-
+    let cartItemQuantityVar = tempCartCopy[index].quantity
+    setDisplayQuantity(cartItemQuantityVar)
 
 }
 
@@ -130,7 +132,6 @@ return(
     <p>{item.description}</p>
     <p id={item.id}>${item.price}</p>
 
-    {/* WORKING ON THIS */}
     {!isClicked?<button onClick={()=>{handleAddToCart(item)}}>Add to cart!</button>:null}
     <br></br>
     {isClicked?<span>Quantity:</span>:null}
