@@ -1,4 +1,4 @@
-This is a project that is a mockup of an online store using React, and React Router.  
+This is a project that is a mockup of an online store using HTML, CSS, JavaScript, React, and React Router.  
 
 It uses fake shopping items from https://fakestoreapi.com/docs and uses the following to API URL in fetch to retrieve items:  https://fakestoreapi.com/products
 

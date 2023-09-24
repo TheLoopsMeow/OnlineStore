@@ -30,6 +30,7 @@ function StoreItems ({item}) {
     const [isClicked, setIsClicked] = useState(false)
     const [displayQuantity, setDisplayQuantity] = useState(1)
     const [tempCart, setTempCart] = useState([])
+    const [quantityWarning, setQuantityWarning] = useState("")
     const itemLimit = 40 
         
     //Working on cart handler
@@ -80,13 +81,14 @@ function updateAmount(e, item) {
     //Create a copy of the cart.
     let tempCartCopy = [...cartItems]
 
-    //This variable takes the value of quantityInput so it can be converted to a number, to preven the item quantity from being set to NaN.
-    let quantityInput2 = quantityInput
-    setQuantityInput(parseInt(quantityInput2))
-
     //Set tempCartCopy's current item quantity to the value of the user input if greater than or equal to 0 and less than itemLimit.
     if(typeof(quantityInput) == "number" && quantityInput >= 0 && quantityInput <= itemLimit) {
         tempCartCopy[index].quantity = parseInt(quantityInput, 10);
+        setQuantityWarning("")
+
+    }
+    else if (quantityInput < 0 || quantityInput > itemLimit){
+        setQuantityWarning(<p>Quantity must be between 0 and 40.</p>)
     }
 
     //Update the entire cart, including updating the current item's quantity.
@@ -136,8 +138,8 @@ return(
     <br></br>
     {isClicked?<span>Quantity:</span>:null}
     {isClicked?displayQuantity:null}
-    {isClicked?decrimentButton:null}
     {isClicked?incrimentButton:null}
+    {isClicked?decrimentButton:null}
     <br></br>
     <form>
     {isClicked?<label htmlFor="item.id">Edit quantity:</label>:null}
@@ -149,10 +151,11 @@ return(
     pattern="[0-40]*"
     placeholder="Quantity"
     value={quantityInput}
-    onChange={(e)=>setQuantityInput(e.target.value)}></input>:null}
+    onChange={(e)=>setQuantityInput(parseInt(e.target.value))}></input>:null}
     {isClicked?<button type="Submit" onClick={(e)=>{updateAmount(e, item)}}>Update Quantity</button>:null}
     </form>
     <br></br>
+    {quantityWarning}
     <br></br>
     {/* If the quantity of the current item is 0, then the product card will behave as though it hasn't been clicked by setting isClicked to false. */}
     {isClicked?cleanUp(item):null}
