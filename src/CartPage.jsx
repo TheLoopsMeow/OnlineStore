@@ -14,8 +14,29 @@ function CartPage () {
         <NavBar />
         <br></br>
         <span>Please review your cart.</span>
+        {renderCartProductCards(cartItems)}
         </>
+
     )
+
+    function renderCartProductCards(cartItems){
+       return (
+        cartItems.map((item)=>{
+            return(
+                <>
+                <br></br>
+
+                <p>{item.title}</p>
+                <p>{item.price} Each</p>
+                <p>x {item.quantity}</p>
+                
+                <img width="50px" src={item.image}></img>
+                </>
+            )
+        })
+       ) 
+    }
+
 
 }
 

@@ -16,9 +16,7 @@ function NavBar () {
     <span>   |    
         <Link to="/CartPage">Cart</Link>
     </span>
-    <span>
-        {/* <Link to="" component={}></Link> */}
-    </span>
+
     </>
     )
 

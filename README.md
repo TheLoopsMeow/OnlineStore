@@ -2,6 +2,14 @@ This is a project that is a mockup of an online store using React, and React Rou
 
 It uses fake shopping items from https://fakestoreapi.com/docs and uses the following to API URL in fetch to retrieve items:  https://fakestoreapi.com/products
 
+Known issues:
+There is no CartPage content, yet.
+Display quantity starts at 0 when it is actually 1.
+User input field allows decrimenting the number of the product below 0 using the arrow.
+Clicking the button after entering nothign into the input field results in a product quantity of NaN.
+Needs CSS styling.
+
+
  
 # React + Vite
 

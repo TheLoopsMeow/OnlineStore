@@ -7,6 +7,7 @@ import {useState, useContext, createContext} from "react"
 import {shoppingCart} from "./App"
 
 
+
 const style5 = {
     width: "66%",
     align: "center"
@@ -30,8 +31,6 @@ function StoreItems ({item}) {
     const [displayQuantity, setDisplayQuantity] = useState(0)
     const [tempCart, setTempCart] = useState([])
         
-
-
     //Working on cart handler
     function handleAddToCart (item) {
         //Set variable that determines behavior of product card.
