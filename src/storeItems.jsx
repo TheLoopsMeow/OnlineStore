@@ -57,6 +57,8 @@ function incrimentProduct(tempCart){
 
     if(tempCartCopy[0].quantity > 0 && tempCartCopy[0].quantity <= itemLimit) {
         tempCartCopy[0].quantity += 1;
+        setQuantityWarning("")
+
     }
 
     setTempCart(tempCartCopy);
@@ -67,6 +69,8 @@ function decrimentProduct(tempCart){
     let tempCartCopy = [...tempCart];
     if(tempCartCopy[0].quantity > 0 && tempCartCopy[0].quantity <= itemLimit) {
         tempCartCopy[0].quantity -= 1;
+        setQuantityWarning("")
+
     }
 
     setTempCart(tempCartCopy);
@@ -88,7 +92,7 @@ function updateAmount(e, item) {
 
     }
     else if (quantityInput < 0 || quantityInput > itemLimit){
-        setQuantityWarning(<p>Orders must be for between 0 and 40 items.</p>)
+        setQuantityWarning(<p>Orders must be for between 0 and 40 of each item.</p>)
     }
 
     //Update the entire cart, including updating the current item's quantity.
