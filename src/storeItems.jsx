@@ -109,7 +109,7 @@ function initializeProductCard(item){
         setIsClicked(true)
         setDecrimentButton(<button onClick={()=>{decrimentProduct(cartItems)}}>-</button>)
         setIncrimentButton(<button onClick={()=>{incrimentProduct(cartItems)}}>+</button>)
-        setDisplayQuantity(cartItems[index].quantity)
+        setDisplayQuantity(1)
     }
 }
 return(
