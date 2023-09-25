@@ -108,11 +108,16 @@ body {
   color: black;
   background-position: center;
   background-color: rgb(152, 152, 117);
-  
 }
 
 a {
+  
+  font-size: 2vw;
   color: black;
+  text-decoration: none;
+}
+a:active {
+  color: rgb(127, 129, 102);
 }
 a:hover {
   color: rgb(80, 80, 80);
@@ -138,6 +143,11 @@ input {
 }
 
 .productCard {
+  background-image: url("./images/gold2.jpeg");
+  opacity: 95%;
+  color: black;
+  text-decoration: bold;
+  text-shadow: 2px 2px 1px rgb(132, 123, 74);
   background-color: rgb(132, 138, 65, 80%);
   width: 100%;
   padding: 1em;
@@ -146,6 +156,7 @@ input {
 }
 
 button {
+  background-image: url("./images/gold1.jpeg");
   background-color: rgb(87, 95, 7);
   border-radius: 3px;
   width: 40%;
@@ -163,8 +174,18 @@ button {
   border-radius: 10px;
 }
 
+.cart {
+  background-image: url("./images/gold2.jpeg");
+  opacity: 80%;
+  background-color: rgb(132, 138, 65, 80%);
+  width: 100%;
+  padding: 1em;
+  border: 2px solid rgb(91, 79, 2);
+  border-radius: 2vw;
+}
+
 .loading {
-  .store {
+
     font-family: "Cedarville Cursive";
     font-size: 2vw;
     text-shadow: 2px 2px 2px rgb(100, 105, 17);
@@ -172,10 +193,10 @@ button {
     /* border: 1px; */
     width: 70%;
     border-radius: 10px;
-  }
+  
 }
 
-.cart {
+.cartHeader {
   font-family: "Cedarville Cursive";
   font-size: 4vw;
   text-shadow: 2px 2px 2px black;
@@ -188,8 +209,8 @@ button:hover{
 
 .homePage {
   font-family: "Cedarville Cursive";
-  font-size: 6vw;
-  text-shadow: 2px 2px 2px rgb(100, 105, 17);
+  font-size: 5vw;
+  text-shadow: 2px 2px 3px rgb(126, 129, 73);
   /* background-color: rgb(0, 0, 0, 5%); */
   /* border: 1px; */
   width: 70%;
@@ -198,4 +219,15 @@ button:hover{
 
 .homePageHeader {
 
+}
+
+em {
+  text-shadow: 2px 2px 4px rgb(186, 162, 25);
+  text-decoration-line: underline;
+}
+
+.NavBar {
+  display: block;
+  position: absolute;
+  text-align: center;
 }

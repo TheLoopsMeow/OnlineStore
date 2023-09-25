@@ -7,16 +7,17 @@ import {BrowserRouter, Router, Routes, Link} from "react-router-dom"
 function NavBar () {
     return (
         <>
+        <div className="NavBar">
     <span>
-        <Link to="/">Home Page</Link>
+        <Link to="/"> Home Page </Link>
     </span>
     <span>   |    
-        <Link to="/Store">Store</Link>
+        <Link to="/Store"> Store </Link>
     </span>
     <span>   |    
-        <Link to="/CartPage">Cart</Link>
+        <Link to="/CartPage"> Cart </Link>
     </span>
-
+    </div>
     </>
     )
 

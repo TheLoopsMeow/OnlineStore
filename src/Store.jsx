@@ -53,7 +53,7 @@ return (
     <div>
     <NavBar />
     <br></br>
-    <span className="store">Have a look around!</span>
+    <span className="store">Kindly, peruse our fine offerings!</span>
     <br></br>
     <br></br>
     {isLoading ? <div className="loading">Preparing all the greatest merchandise...</div> : null}

@@ -22,7 +22,12 @@ function HomePage () {
 </nav>
 <div>
     <h1 className="homePageHeader"></h1>
-<span className="homePage">Welcome to the Ambay Mall online boutique, <br></br><em>by Wyatt.</em></span>
+<span className="homePage">Welcome to the Ambay Mall online boutique. <br></br><em>by Wyatt.</em></span>
+<br></br>
+<br></br>
+<span className="homePage">
+    There's no finer boutique.
+</span>
 </div>
 </>
     )

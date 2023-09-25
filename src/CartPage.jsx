@@ -25,9 +25,10 @@ function CartPage () {
         <>
         <NavBar />
         <br></br>
-        <span className="cart">Please review your cart.</span>
-        {renderCartProductCards(cartItems)}
-        <p>Total: {addZero(stringTotal)}</p>
+        <span className="cartHeader">Please review your gift bag.</span>
+        <span >{renderCartProductCards(cartItems)}
+        <p className="cart">Total: {addZero(stringTotal)}</p>
+        </span>
         </>
 
     )
@@ -47,17 +48,18 @@ function CartPage () {
        return (
         cartItems.map((item)=>{
             let itemTotal = item.quantity * item.price
-
             let itemTotalString = "$" + itemTotal.toLocaleString()
 
 
             return(
                 <>
+                <div className="cart">
                 <br></br>
                 <p>{item.title}</p>
                 <p>${item.price} each x {item.quantity}</p>
                 <p>{addZero(itemTotalString)}</p>
                 <img width="50px" src={item.image}></img>
+                </div>
                 </>
             )
         })

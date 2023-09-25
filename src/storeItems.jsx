@@ -116,7 +116,7 @@ return(
     
     <>
     {!isClicked?initializeProductCard(item):null}
-    <span className="productCard" key={item.id}>
+    <div className="productCard" key={item.id}>
     <img className="image" src={item.image} alt={item.title} />
     <p>{item.title}</p>
     <p>{item.description}</p>
@@ -151,7 +151,7 @@ return(
     <br></br>
     {/* If the quantity of the current item is 0, then the product card will behave as though it hasn't been clicked by setting isClicked to false. */}
     {isClicked?cleanUp(item):null}
-    </span>
+    </div>
 
     </>
     )
