@@ -2,6 +2,8 @@ import react, { createContext, useState, useEffect, useContext } from "react"
 import HomePage from "./HomePage"
 import CartPage from "./CartPage"
 import NavBar from "./NavBar"
+import './App.css'
+
 import App, {shoppingCart} from "./App"
 import {BrowserRouter, Router, Routes, Link} from "react-router-dom"
 import StoreItems from "./storeItems"
@@ -35,7 +37,9 @@ function Store () {
             items.map((item)=>{
                     return(
                         <>
+                        <span className="container">
                         <StoreItems item={item}  />
+                        </span>
                         </>
                            )
             
@@ -49,10 +53,10 @@ return (
     <div>
     <NavBar />
     <br></br>
-    Have a look around!
+    <span className="store">Have a look around!</span>
     <br></br>
     <br></br>
-    {isLoading ? <div>Loading ...</div> : null}
+    {isLoading ? <div className="loading">Preparing all the greatest merchandise...</div> : null}
 
     {renderProductCards()}
    

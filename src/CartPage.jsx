@@ -2,6 +2,8 @@ import react from "react"
 import HomePage from "./HomePage"
 import Store from "./Store"
 import NavBar from "./NavBar"
+import './index.css'
+
 import {useState, useContext, createContext} from "react"
 import App, {shoppingCart} from "./App"
 import {BrowserRouter, Router, Routes, Link} from "react-router-dom"
@@ -19,21 +21,18 @@ function CartPage () {
     //Converts the total to a string.
     let stringTotal = "$" + total.toLocaleString()
 
-    console.log(cartItems)
-    console.log(total)
-
     return(
         <>
         <NavBar />
         <br></br>
-        <span>Please review your cart.</span>
+        <span className="cart">Please review your cart.</span>
         {renderCartProductCards(cartItems)}
         <p>Total: {addZero(stringTotal)}</p>
         </>
 
     )
 
-    //This function will add a zero to the display of a total if there is only 1 decimal.  This addZero function is used instead of toFixed, since toLaaleString() is being used.
+    //This function will add a zero to the display of a total if there is only 1 decimal.  This addZero function is used instead of toFixed, since toLocaleString() is being used.
     function addZero(totalString){
         let index = totalString.indexOf(".")
             if(totalString[index+1] === totalString[totalString.length-1]){

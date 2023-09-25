@@ -3,24 +3,9 @@ import react from "react"
 import App from "./App"
 import NavBar from "./NavBar"
 import Store from "./Store"
+import './index.css'
 import {useState, useContext, createContext} from "react"
 import {shoppingCart} from "./App"
-
-
-
-const style5 = {
-    width: "66%",
-    align: "center"
-}
-
-const style6 = {
-    backgroundColor: "black",
-    width: "30%",
-    display: "inline-grid",
-    padding: "1em",
-    border: "2px solid darkblue",
-    borderRadius: "12px",
-}
 
 function StoreItems ({item}) {
     const {cartItems, setCartItems} = useContext(shoppingCart)
@@ -120,7 +105,6 @@ function cleanUp(item){
 //This is used to set the incriment button, decriment button, and quantity input when user leaves Store component and comes back.
 function initializeProductCard(item){
     let index = cartItems.findIndex((eachItem)=>eachItem.id === item.id)
-    console.log(index)
     if(index >= 0 && cartItems[index].quantity > 0){
         setIsClicked(true)
         setDecrimentButton(<button onClick={()=>{decrimentProduct(cartItems)}}>-</button>)
@@ -132,8 +116,8 @@ return(
     
     <>
     {!isClicked?initializeProductCard(item):null}
-    <div style={style6} key={item.id}>
-    <img style={style5} src={item.image} alt={item.title} />
+    <span className="productCard" key={item.id}>
+    <img className="image" src={item.image} alt={item.title} />
     <p>{item.title}</p>
     <p>{item.description}</p>
     <p id={item.id}>${item.price}</p>
@@ -141,12 +125,15 @@ return(
     {!isClicked?<button onClick={()=>{handleAddToCart(item)}}>Add to cart!</button>:null}
     <br></br>
     {isClicked?<span>Quantity:</span>:null}
+    <br></br>
     {isClicked?displayQuantity:null}
-    {isClicked?incrimentButton:null}
+    <br></br>
     {isClicked?decrimentButton:null}
+    {isClicked?incrimentButton:null}
     <br></br>
     <form>
     {isClicked?<label htmlFor="item.id">Edit quantity:</label>:null}
+    <br></br>
     {isClicked?<input 
     id="item.id" 
     name="item.id" 
@@ -156,6 +143,7 @@ return(
     placeholder="Quantity"
     value={quantityInput}
     onChange={(e)=>setQuantityInput(parseInt(e.target.value))}></input>:null}
+    <br></br>
     {isClicked?<button type="Submit" onClick={(e)=>{updateAmount(e, item)}}>Update Quantity</button>:null}
     </form>
     <br></br>
@@ -163,7 +151,7 @@ return(
     <br></br>
     {/* If the quantity of the current item is 0, then the product card will behave as though it hasn't been clicked by setting isClicked to false. */}
     {isClicked?cleanUp(item):null}
-    </div>
+    </span>
 
     </>
     )

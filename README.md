@@ -1,5 +1,7 @@
 This is a project that is a mockup of an online store using HTML, CSS, JavaScript, React, and React Router.  
 
+To run, open the terminal and type the terminal command "npm run dev" and hit enter.  Then, copy the Local url that will appear and past it into the address bar of a web browser.
+
 It uses fake shopping items from https://fakestoreapi.com/docs and uses the following to API URL in fetch to retrieve items:  https://fakestoreapi.com/products
 
 Known issues:

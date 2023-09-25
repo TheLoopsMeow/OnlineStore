@@ -2,6 +2,7 @@ import react from "react"
 import App from "./App"
 import NavBar from "./NavBar"
 import Store from "./Store"
+import './index.css'
 import {useState, useContext, createContext} from "react"
 import {shoppingCart} from "./App"
 
@@ -20,8 +21,8 @@ function HomePage () {
 
 </nav>
 <div>
-    <h1>Home Page</h1>
-<span>Welcome to my online store, where all of your product related hopes and dreams will come true!</span>
+    <h1 className="homePageHeader"></h1>
+<span className="homePage">Welcome to the Ambay Mall online store, <br></br><em>by Wyatt.</em></span>
 </div>
 </>
     )

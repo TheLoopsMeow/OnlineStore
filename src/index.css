@@ -1,4 +1,4 @@
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -66,4 +66,136 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;  
+  -moz-box-ordinal-group: $val;     
+  -ms-flex-order: $val;     
+  -webkit-order: $val;  
+  order: $val;
+}
+
+.wrapper {
+  @include flexbox();
+}
+
+.item {
+  @include flex(1 200px);
+  @include order(2);
+}
+
+body {
+  background-image: url("./images/FengShuiMall.jpeg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: black;
+  background-position: center;
+  background-color: rgb(152, 152, 117);
+  
+}
+
+a {
+  color: black;
+}
+a:hover {
+  color: rgb(80, 80, 80);
+}
+
+input {
+  background-color: rgb(132, 138, 65);
+  text-align: center;
+}
+
+.image {
+  width: 20%;
+  text-align: center;
+  opacity: 85%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  width: 33vw;
+}
+
+.productCard {
+  background-color: rgb(132, 138, 65, 80%);
+  width: 100%;
+  padding: 1em;
+  border: 2px solid rgb(91, 79, 2);
+  border-radius: 2vw;
+}
+
+button {
+  background-color: rgb(87, 95, 7);
+  border-radius: 3px;
+  width: 40%;
+  font-size: 2vw;
+  text-align: center;
+}
+
+.store {
+  font-family: "Cedarville Cursive";
+  font-size: 4vw;
+  text-shadow: 2px 2px 2px rgb(100, 105, 17);
+  /* background-color: rgb(0, 0, 0, 10%); */
+  /* border: 1px; */
+  width: 70%;
+  border-radius: 10px;
+}
+
+.loading {
+  .store {
+    font-family: "Cedarville Cursive";
+    font-size: 2vw;
+    text-shadow: 2px 2px 2px rgb(100, 105, 17);
+    /* background-color: rgb(0, 0, 0, 10%); */
+    /* border: 1px; */
+    width: 70%;
+    border-radius: 10px;
+  }
+}
+
+.cart {
+  font-family: "Cedarville Cursive";
+  font-size: 4vw;
+  text-shadow: 2px 2px 2px black;
+  background: rgb(0, 0, 0, 10%)
+}
+
+button:hover{
+  
+}
+
+.homePage {
+  font-family: "Cedarville Cursive";
+  font-size: 6vw;
+  text-shadow: 2px 2px 2px rgb(100, 105, 17);
+  /* background-color: rgb(0, 0, 0, 5%); */
+  /* border: 1px; */
+  width: 70%;
+  border-radius: 10px;
+}
+
+.homePageHeader {
+
 }
