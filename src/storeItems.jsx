@@ -118,15 +118,15 @@ return(
     {!isClicked?initializeProductCard(item):null}
     <div className="productCard" key={item.id}>
     <img className="image" src={item.image} alt={item.title} />
-    <p>{item.title}</p>
+    <p className="cardHeader">{item.title}</p>
     <p>{item.description}</p>
-    <p id={item.id}>${item.price}</p>
-
-    {!isClicked?<button onClick={()=>{handleAddToCart(item)}}>Add to cart!</button>:null}
+    <p className="price" id={item.id}>${item.price}</p>
+    <br></br><br></br>
+    {!isClicked?<button onClick={()=>{handleAddToCart(item)}}>I fancy this.</button>:null}
     <br></br>
-    {isClicked?<span>Quantity:</span>:null}
+    {isClicked?<span className="price">Quantity:</span>:null}
     <br></br>
-    {isClicked?displayQuantity:null}
+    <span className="price">{isClicked?displayQuantity:null}</span>
     <br></br>
     {isClicked?decrimentButton:null}
     {isClicked?incrimentButton:null}
