@@ -1,15 +1,10 @@
-This is a project that is a mockup of an online store using HTML, CSS, JavaScript, React, and React Router.  
+This is a portfolio project that is a mockup of an online store to showcase my skill in HTML, CSS, JavaScript, React, and React Router.  
 
-To run, open the terminal and type the terminal command "npm run dev" and hit enter.  Then, copy the Local url that will appear and past it into the address bar of a web browser.
+To run, after running "npm install," open the terminal and type the terminal command "npm run dev" and hit enter.  Then, copy the Local url that will appear and past it into the address bar of a web browser.
 
-It uses fake shopping items from https://fakestoreapi.com/docs and uses the following to API URL in fetch to retrieve items:  https://fakestoreapi.com/products
-
-Known issues:
-User input field allows decrimenting the number of the product graphically below 0 using the arrow even though the quantity below 0 won't be set as the item's quantity.  The input field shouldn't go below 0.
-Needs CSS styling.
+It uses fake shopping items from https://fakestoreapi.com/docs and uses the following to API URL to retrieve items:  https://fakestoreapi.com/products
 
 
- 
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
