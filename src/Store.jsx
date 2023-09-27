@@ -37,7 +37,7 @@ function Store () {
             items.map((item)=>{
                     return(
                         <>
-                        <span className="container">
+                        <span>
                         <StoreItems item={item}  />
                         </span>
                         </>
@@ -53,13 +53,11 @@ return (
     <div>
     <NavBar />
     <br></br>
-    <span className="store">Kindly, peruse our fine offerings!</span>
+    <h1 className="storeHeader">Kindly, peruse our fine offerings!</h1>
     <br></br>
     <br></br>
     {isLoading ? <div className="loading">Preparing all the greatest merchandise...</div> : null}
-
-    {renderProductCards()}
-   
+    <div className="container">{renderProductCards()}</div>
     </div>
     </>
 )
