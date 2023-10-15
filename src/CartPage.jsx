@@ -25,7 +25,7 @@ function CartPage () {
         <>
         <NavBar />
         <br></br>
-        <span className="cartHeader">Please review your gift bag.</span>
+        <span className="cartHeader">Please review your cart.</span>
         <span className="container">{renderCartProductCards(cartItems)}
         <p className="cart">Total: {addZero(stringTotal)}</p>
         </span>

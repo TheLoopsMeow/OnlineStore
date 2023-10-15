@@ -150,7 +150,8 @@ button {
 .homePage {
   font-family: "Cedarville Cursive";
   font-size: 5vw;
-  text-shadow: 2px 2px 3px rgb(126, 129, 73);
+  /* text-shadow: 2px 2px 3px rgb(126, 129, 73); */
+  text-shadow: 2px 2px 3px black;
   width: 70%;
   border-radius: 10px;
 }
