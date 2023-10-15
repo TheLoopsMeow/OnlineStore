@@ -116,14 +116,17 @@ return(
     
     <>
     {!isClicked?initializeProductCard(item):null}
-    <div className="productCard" key={item.id}>
-    <img className="image" src={item.image} alt={item.title} />
-    <p className="cardHeader">{item.title}</p>
-    <p>{item.description}</p>
+    <div className="card" key={item.id}>
+    {/* <p className="cardHeader">{item.title}</p> */}
+    <div className="productCard" >
+    <img className="image overflow" src={item.image} alt={item.title} />
+ 
+    <p>{item.title}</p>
     <p className="price" id={item.id}>${item.price}</p>
-    <br></br><br></br>
-    {!isClicked?<button onClick={()=>{handleAddToCart(item)}}>I fancy this.</button>:null}
-    <br></br>
+    <div className="buttonContainer">
+
+    {!isClicked?<button onClick={()=>{handleAddToCart(item)}}>Add to cart</button>:null}
+   <br></br>
     {isClicked?<span className="price">Quantity:</span>:null}
     <br></br>
     <span className="price">{isClicked?displayQuantity:null}</span>
@@ -143,14 +146,15 @@ return(
     placeholder="Quantity"
     value={quantityInput}
     onChange={(e)=>setQuantityInput(parseInt(e.target.value))}></input>:null}
-    <br></br>
     {isClicked?<button type="Submit" onClick={(e)=>{updateAmount(e, item)}}>Update Quantity</button>:null}
     </form>
+    {!isClicked?<p className="overflow">{item.description}</p>:null}
     <br></br>
     {quantityWarning}
-    <br></br>
     {/* If the quantity of the current item is 0, then the product card will behave as though it hasn't been clicked by setting isClicked to false. */}
     {isClicked?cleanUp(item):null}
+    </div>
+    </div>
     </div>
 
     </>
