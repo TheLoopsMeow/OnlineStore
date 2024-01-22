@@ -2,7 +2,7 @@ import react, { createContext, useState, useEffect, useContext } from "react"
 import HomePage from "./HomePage"
 import CartPage from "./CartPage"
 import NavBar from "./NavBar"
-import './App.css'
+// import './App.css'
 
 import App, {shoppingCart} from "./App"
 import {BrowserRouter, Router, Routes, Link} from "react-router-dom"

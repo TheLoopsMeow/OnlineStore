@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+// import './App.css'
 import {BrowserRouter, Router, Routes, Route, Link } from "react-router-dom"
 import {useContext, createContext } from "react"
 import HomePage from "./HomePage"
